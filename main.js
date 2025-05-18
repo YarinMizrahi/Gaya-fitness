@@ -41,3 +41,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
     animatedCards.forEach(card => observer.observe(card));
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    // Hamburger menu
+    const navToggle = document.getElementById('nav-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    navToggle.addEventListener('click', function () {
+        navMenu.classList.toggle('open');
+    });
+
+    // סגירה בלחיצה מחוץ לתפריט
+    document.addEventListener('click', function (e) {
+        if (
+            navMenu.classList.contains('open') &&
+            !navMenu.contains(e.target) &&
+            !navToggle.contains(e.target)
+        ) {
+            navMenu.classList.remove('open');
+        }
+    });
+});
